@@ -10,7 +10,7 @@ const register_req = async (username, email, password) => {
 }
 
 const login_req = async (email, password) => {
-  const response = await axios.post(API_BASE_URL + '/auth/signin', {email, password})
+  const response = await axios.post(API_BASE_URL + '/auth/login', {email, password})
 
   if (response.data.token) {
       console.log(response.data)
