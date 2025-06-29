@@ -8,7 +8,7 @@ import AuthLayout from '../../../components/layout/AuthLayout';
 import { NewLogo } from '../../../components/utils/AnimatedAssets';
 import FinanceIllustration from '../../../components/utils/FinanceIllustration';
 
-const Login = () => {
+const Signin = () => {
     const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
 
@@ -37,8 +37,8 @@ const Login = () => {
         setIsLoading(true);
                 setResponseError("");
         try {
-            await AuthService.login_req(data.email, data.password);
-            localStorage.setItem("message", JSON.stringify({ status: "SUCCESS", text: "Login successful!" }));
+            await AuthService.signin_req(data.email, data.password);
+            localStorage.setItem("message", JSON.stringify({ status: "SUCCESS", text: "Signin successful!" }));
 
             const currentUser = AuthService.getCurrentUser();
             if (currentUser.roles.includes("ROLE_USER")) {
@@ -78,7 +78,7 @@ const Login = () => {
                     <div style={styles.logoContainer}>
                         <NewLogo />
                     </div>
-                    <h2 style={styles.title}>Login</h2>
+                    <h2 style={styles.title}>Signin</h2>
                     {response_error && <p style={styles.errorText}>{response_error}</p>}
                 
                     <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
@@ -118,7 +118,7 @@ const Login = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            {isLoading ? "Logging in..." : 'Login'}
+                            {isLoading ? "Signing in..." : 'Signin'}
                         </motion.button>
                     </form>
                     
@@ -226,4 +226,4 @@ const styles = {
     },
 };
 
-export default Login;
+export default Signin;

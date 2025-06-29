@@ -24,7 +24,7 @@ const ForgotPasswordChangePassword = () => {
             const response = await AuthService.resetPassword(email, data.password);
             if (response.data.status === "SUCCESS") {
                 localStorage.setItem("message", JSON.stringify({ status: "SUCCESS", text: "Password reset successful! Please log in." }));
-                navigate('/auth/login');
+                navigate('/auth/signin');
             } else {
                 setResponseError("Reset password failed: Something went wrong!");
                 }

@@ -118,7 +118,7 @@ const Welcome = () => {
                 </motion.div>
 
                 <motion.div variants={itemVariants} style={styles.buttonContainer}>
-                    <Link to='/auth/login' style={styles.link}>
+                    <Link to='/auth/signin' style={styles.link}>
                         <motion.button 
                             style={styles.button}
                             whileHover={{ 

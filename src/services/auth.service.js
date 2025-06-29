@@ -1,5 +1,7 @@
 import axios from "axios";
+
 import API_BASE_URL from "./auth.config";
+
 
 const register_req = async (username, email, password) => {
   return await axios.post(API_BASE_URL + '/auth/signup', {
@@ -9,7 +11,7 @@ const register_req = async (username, email, password) => {
   })
 }
 
-const login_req = async (email, password) => {
+const signin_req = async (email, password) => {
   const response = await axios.post(API_BASE_URL + '/auth/signin', {email, password})
 
   if (response.data.token) {
@@ -130,7 +132,7 @@ const clearInvalidTokens = () => {
 
 const AuthService = {
   register_req,
-  login_req,
+  signin_req,
   verifyRegistrationVerificationCode,
   resendRegistrationVerificationCode,
   getCurrentUser,

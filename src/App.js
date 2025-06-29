@@ -12,7 +12,7 @@ import SavedTransactions from './pages/user/savedTransactions.js';
 import EditSavedTransaction from './pages/user/editSavedTransaction.js';
 
 const Welcome = lazy(() => import('./pages/welcome.js'))
-const Login = lazy(() => import('./pages/auth/login/login.js'))
+const Signin = lazy(() => import('./pages/auth/login/login.js'))
 const Register = lazy(() => import('./pages/auth/register/register.js'))
 const UserRegistrationVerfication = lazy(() => import('./pages/auth/register/userRegistrationVerification.js'))
 const RegistrationSuccess = lazy(() => import('./pages/auth/register/registrationSuccessfull.js'))
@@ -82,7 +82,7 @@ function App() {
                         </Route>
 
                         <Route path="/" element={<Welcome />} />
-                        <Route path="/auth/login" element={<Login />} />
+                        <Route path="/auth/signin" element={<Signin />} />
                         <Route path="/auth/register" element={<Register />} />
                         <Route path="/unauthorized" element={<UnAuthorizedAccessPage />} />
                         <Route path="*" element={<NotFoundPage />} />
