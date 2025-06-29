@@ -40,11 +40,18 @@ const resendRegistrationVerificationCode = async(email) => {
 const getCurrentUser = () => {
   try {
     const userStr = localStorage.getItem("user");
-    if (!userStr) return null;
+    if (!userStr) {
+      console.log('No user found in localStorage');
+      return null;
+    }
     
     const user = JSON.parse(userStr);
-    if (!user || !user.token) return null;
+    if (!user || !user.token) {
+      console.log('Invalid user object or missing token:', user);
+      return null;
+    }
     
+    console.log('Current user found:', { email: user.email, id: user.id, hasToken: !!user.token });
     return user;
   } catch (error) {
     console.error("Error parsing user from localStorage:", error);
@@ -95,8 +102,10 @@ const resetPassword = async (email, password) => {
 const authHeader = () => {
   const user = getCurrentUser();
   if (user && user.token) {
+    console.log('Auth header created with token:', user.token.substring(0, 20) + '...');
     return { Authorization: 'Bearer ' + user.token };
   } else {
+    console.log('No valid user or token found for auth header');
     return {};
   }
 }
